@@ -1,12 +1,19 @@
 package com.dolphinsmemory.exam.Controllers;
 
+import java.net.URI;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import com.dolphinsmemory.exam.domain.Students;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+
+import com.dolphinsmemory.exam.model.Student;
+import com.dolphinsmemory.exam.repository.StudentRepository;
 
 @RestController
 public class StudentsController {
@@ -14,10 +21,16 @@ public class StudentsController {
 	private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/student")
-    public Students student(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Students(counter.incrementAndGet(),
-                            String.format(template,name));
+    @Autowired
+    private StudentRepository studentRepository;
+    @PostMapping("/students")
+    public ResponseEntity<Object> createStudent(@RequestBody Student student){
+    	Student savedStudent = studentRepository.save(student);
+    	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedStudent.getId()).toUri();
+
+		return ResponseEntity.created(location).build();
     }
+
 	
 }
