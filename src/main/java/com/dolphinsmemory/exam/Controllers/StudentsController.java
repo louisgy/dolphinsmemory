@@ -17,9 +17,9 @@ import com.dolphinsmemory.exam.repository.StudentRepository;
 
 @RestController
 public class StudentsController {
-
+	
 	private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+	
 
     @Autowired
     private StudentRepository studentRepository;
