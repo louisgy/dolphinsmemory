@@ -18,19 +18,19 @@ import com.dolphinsmemory.exam.repository.StudentRepository;
 @RestController
 public class StudentsController {
 	
-	private static final String template = "Hello, %s!";
+	
 	
 
-    @Autowired
-    private StudentRepository studentRepository;
-    @PostMapping("/students")
-    public ResponseEntity<Object> createStudent(@RequestBody Student student){
-    	Student savedStudent = studentRepository.save(student);
-    	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedStudent.getId()).toUri();
-
-		return ResponseEntity.created(location).build();
-    }
+//    @Autowired
+    private  StudentRepository studentRepository;
+//    @PostMapping("/students")
+//    public ResponseEntity<Object> createStudent(@RequestBody Student student){
+//    	Student savedStudent = studentRepository.save(student);
+//    	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//				.buildAndExpand(savedStudent.getId()).toUri();
+//
+//		return ResponseEntity.created(location).build();
+//    }
 
 	
 }
