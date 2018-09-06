@@ -1,10 +1,13 @@
 package com.dolphinsmemory.exam.Controllers;
 
 import java.net.URI;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -15,10 +18,33 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.dolphinsmemory.exam.model.Student;
 import com.dolphinsmemory.exam.repository.StudentRepository;
 
+import advice.StudentNotFoundException;
+
 @RestController
 public class StudentsController {
 	
+	private final StudentRepository repository;
 	
+	StudentsController(StudentRepository repository) {
+		this.repository=repository;
+	}
+	
+	@GetMapping("/students")
+	List<Student> all() {
+		return repository.findAll();
+	}
+
+	@PostMapping("/students")
+	Student newEmployee(@RequestBody Student newStudent) {
+		return repository.save(newStudent);
+	}
+	
+	@GetMapping("/students/{id}")
+	Student one(@PathVariable int id) {
+		return repository.findById(id)
+			.orElseThrow(() -> new StudentNotFoundException(id));
+	}
+
 	
 
 //    @Autowired

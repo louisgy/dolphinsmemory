@@ -15,14 +15,14 @@ public class DolphinsApplication {
 		SpringApplication.run(DolphinsApplication.class, args);
 	}
 	
-	@Bean
-	public CommandLineRunner demo(StudentRepository studentRepository) {
-		Student student = new Student();
-		student.setFirstName("first");
-		student.setLastName("lastname");
-		return(args) -> {
-			
-			studentRepository.save(student);
-		};
-	}
+	// Works fine. it can be used to create run code as the program starts
+//	@Bean
+//	public CommandLineRunner demo(StudentRepository studentRepository) {
+//		Student student = new Student();
+//		student.setFirstName("first");
+//		student.setLastName("lastname");
+//		return(args) -> {		
+//			studentRepository.save(student);
+//		};
+//	}
 }

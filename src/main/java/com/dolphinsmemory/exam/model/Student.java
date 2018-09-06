@@ -27,6 +27,15 @@ public class Student {
 	@Size(min = 2, max = 32)
 	private String lastName;
 	
+	public Student() {
+		
+	}
+
+	public Student(String firstName,String lastName) {
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public String getFirstName() {
 		return firstName;
