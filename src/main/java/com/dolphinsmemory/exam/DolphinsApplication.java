@@ -15,12 +15,14 @@ public class DolphinsApplication {
 		SpringApplication.run(DolphinsApplication.class, args);
 	}
 	
-//	@Bean
-//	public CommandLineRunner demo(StudentRepository studentRepository) {
-//		Student student = new Student("first","last");
-//		return(args) -> {
-//			
-//			studentRepository.save( new Student("first","last","email","11/12/12","username","domain","grade","f",""));
-//		};
-//	}
+	@Bean
+	public CommandLineRunner demo(StudentRepository studentRepository) {
+		Student student = new Student();
+		student.setFirstName("first");
+		student.setLastName("lastname");
+		return(args) -> {
+			
+			studentRepository.save(student);
+		};
+	}
 }

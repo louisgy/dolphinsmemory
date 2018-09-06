@@ -26,6 +26,7 @@ public class Student {
 	@NotNull
 	@Size(min = 2, max = 32)
 	private String lastName;
+	
 
 	public String getFirstName() {
 		return firstName;
