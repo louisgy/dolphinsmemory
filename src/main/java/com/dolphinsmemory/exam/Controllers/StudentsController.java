@@ -63,7 +63,7 @@ public class StudentsController {
 	}
 
 	@DeleteMapping("/students/{id}")
-	void deleteEmployee(@PathVariable int id) {
+	void deleteStudent(@PathVariable int id) {
 		repository.deleteById(id);
 	}
 

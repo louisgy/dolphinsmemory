@@ -1,0 +1,64 @@
+ReadMe
+
+TASK
+1. Add to string and test the coursesession controller 
+2. use the documentation about relationship between tables to fix the issue with the Course Session COntroller
+3. Ignore the map feature for the moment in the controller
+
+
+
+
+ RUN WEBSERVICE --------------------------------------------------
+ 1. Open Command
+ 2. change direcotry : cd Documents/workspace-sts-3.9.5.RELEASE/dolphins/
+ 3. Execute the command ./mvnw -X spring-boot:run 
+ 
+ List all students
+ curl -v localhost:8080/students
+ 
+ Display student with id 10001
+ curl localhost:8080/students/10001
+ 
+ Update the first and last name for user  with the id 10304
+ curl -X PUT localhost:8080/employees/10304 -H 'Content-type:application/json' -d '{"firstName": "Danise", "lastName": "Eugene"}'
+ 
+ Add user with the name
+ curl -X POST localhost:8080/students -H 'Content-type:application/json' -d '{"firstName": "Danise","lastName" : "Eugene"}'
+ curl -X POST localhost:8080/students -H 'Content-type:application/json' -d '{"firstName": "Dan","lastName" : "Euge"}'
+ 
+ 
+ ADD COURSE
+curl -X POST localhost:8080/courses -H 'Content-type:application/json' -d '{"categorie": "traing","code": "2343","description": "Mysql  cert","domain" : "database","title" : "SQL certification"}'
+
+LIST ALL COURSES
+curl -v localhost:8080/courses
+ 
+ Delete employee with id 10001
+ curl -X DELETE localhost:8080/students/10001
+ 
+
+TEACHERS --------------------------------------------------------
+ADD TEACHER
+curl -X POST localhost:8080/teachers -H 'Content-type:application/json' -d '{"dob": "2018-10-23","username": "teacher1","email": "teacher@gmail.com","firstName" : "Gary","lastName" : "Doviscard"}'
+
+LIST ALL TEACHERS
+curl -v localhost:8080/teachers
+
+
+COURSESESSION ----------------------------------------------------
+
+ADD NEW COURSE SESSION
+curl -X POST localhost:8080/coursession/{507}/{3}/coursesessions -H 'Content-type:application/json' -d '{"dateStart": "2001-12-12","dateEnd": "1989-02-02","averageGrade": 78.44,"courseId" : 507,"teacherId" : 3}'
+
+
+
+LIST ALL COURSE SESSION
+curl -v localhost:8080/coursesession
+
+
+
+
+How can I kill whatever process is using port 8080 
+lsof -i :8080
+kill -9 636
+ 
