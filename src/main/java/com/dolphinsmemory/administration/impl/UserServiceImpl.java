@@ -17,6 +17,8 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User createUser(User user) {
+		//if email already existi in database or email format incorrect
+		
 		return userRepository.save(user);
 	
 	}
@@ -33,17 +35,22 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	@Override
-	public boolean authenticateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<User> findAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean authenticate(String username, String email, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
 	
 	
 

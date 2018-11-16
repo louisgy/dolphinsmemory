@@ -9,5 +9,5 @@ public interface UserService {
 	public User editUser(User user);
 	public User findUser();
 	public List<User>findAllUsers();
-	public boolean authenticateUser(User user);
+	public boolean authenticate(String username, String email, String password);
 }

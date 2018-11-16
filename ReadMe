@@ -13,6 +13,11 @@ TASK
  2. change direcotry : cd Documents/workspace-sts-3.9.5.RELEASE/dolphins/
  3. Execute the command ./mvnw -X spring-boot:run 
  
+ DATABASE ------------------
+create database dolphins_db
+drop database dolphins_db
+ 
+ 
  List all students
  curl -v localhost:8080/students
  
