@@ -18,11 +18,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User createUser(User user) {
 		//if email already existi in database or email format incorrect
-		if(userRepository.findByEmail((user.getEmail() = null)){
-			return ("Email is being used");
-		} else if if(userRepository.findByEmail((user.getEmail() = null)){
-			return ("username is being used");
-		}
+//		if(userRepository.findByEmail(user.getEmail() != null)){
+//			return ("Email is being used");
+//		} else if if(userRepository.findByEmail((user.getEmail() = null)){
+//			return ("username is being used");
+//		}
 		return userRepository.save(user);
 	
 	}
