@@ -3,6 +3,7 @@ package com.dolphinsmemory.exam.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,11 +18,12 @@ public class Student {
 
 	@Id
 	@GeneratedValue(generator = "Address_Gen")
+	@Column(name="STUDENT_ID")
 	private int id;
 
 	@NotNull
 	@Size(min = 2, max = 32)
-	private String firstName;
+	private String firstName;   
 
 	@NotNull
 	@Size(min = 2, max = 32)

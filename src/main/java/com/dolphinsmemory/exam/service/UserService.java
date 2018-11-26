@@ -1,8 +1,8 @@
-package com.dolphinsmemory.administration;
+package com.dolphinsmemory.exam.service;
 
 import java.util.List;
 
-import com.dolphinsmemory.administration.model.User;
+import com.dolphinsmemory.exam.model.User;
 
 public interface UserService {
 	public User createUser(User user);

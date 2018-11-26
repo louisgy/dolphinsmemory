@@ -1,4 +1,4 @@
-package com.dolphinsmemory.dto;
+package com.dolphinsmemory.exam.dto;
 
 import com.dolphinsmemory.types.RequestStatus;
 

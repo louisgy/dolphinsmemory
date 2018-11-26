@@ -61,8 +61,9 @@ LIST ALL COURSE SESSION
 curl -v localhost:8080/coursesession
 
 
----USER
+-----USER
 curl -X POST localhost:8080/new-user -H 'Content-type:application/json' -d '{"firstName": "Edd","lastName": "Louis","email": "teacher@gmail.com","password" : "pass"}'
+curl -X POST localhost:8080/new-user -H 'Content-type:application/json' -d '{"firstName": "E","lastName": "Louis","email": "teacher@gmail.com","password" : "pass"}'
 
 
 How can I kill whatever process is using port 8080 

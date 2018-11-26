@@ -1,13 +1,18 @@
-package com.dolphinsmemory.administration.impl;
+package com.dolphinsmemory.exam.impl;
 
 import java.util.List;
 
-import com.dolphinsmemory.administration.UserRepository;
-import com.dolphinsmemory.administration.UserService;
-import com.dolphinsmemory.administration.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.dolphinsmemory.exam.model.User;
+import com.dolphinsmemory.exam.repository.UserRepository;
+import com.dolphinsmemory.exam.service.UserService;
+
+@Service
 public class UserServiceImpl implements UserService{
 
+	@Autowired
 	private  final UserRepository userRepository;
 	
 	

@@ -1,11 +1,15 @@
-package com.dolphinsmemory.administration.model;
+package com.dolphinsmemory.exam.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.dolphinsmemory.validator.ValidPassword;
 
 @Entity
 @TableGenerator(name = "User_Id_Gen", table = "userId_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "Addr_Gen", initialValue = 50000, allocationSize = 100)
@@ -15,13 +19,19 @@ public class User {
 	@GeneratedValue(generator = "User_Id_Gen")
 	private int id;
 	
+	@Email
 	private String email;
 	
+	@ValidPassword
 	private String password;
+	
+	@Transient
+	private String password1;
+	
 	
 	@NotNull
 	@Size(min = 2, max = 32)
-	private String frstName;
+	private String firstName;
 	
 	@NotNull
 	@Size(min = 2, max = 32)
@@ -50,11 +60,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getFrstName() {
-		return frstName;
+	public String getFirstName() {
+		return firstName;
 	}
 	public void setFrstName(String frstName) {
-		this.frstName = frstName;
+		this.firstName = frstName;
 	}
 	public String getLastName() {
 		return lastName;

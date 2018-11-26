@@ -1,4 +1,4 @@
-package com.dolphinsmemory.administration;
+package com.dolphinsmemory.exam.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

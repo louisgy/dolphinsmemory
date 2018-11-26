@@ -1,4 +1,4 @@
-package com.dolphinsmemory.administration;
+package com.dolphinsmemory.exam.model;
 
 public class UserLogin {
 
