@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class CourseSession {
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="COURSE_SESSION_ID")
     private int id;
@@ -21,6 +22,12 @@ public class CourseSession {
 	private Date dateEnd;
 	private double averageGrade;
 	
+	
+	
+	public CourseSession() {
+		super();
+	}
+
 	@ManyToOne
 	  @JoinColumn(name="courseId")
 	private Course course;

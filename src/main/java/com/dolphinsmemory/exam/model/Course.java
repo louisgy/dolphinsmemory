@@ -33,6 +33,19 @@ public class Course {
 		courseSession = new ArrayList<CourseSession>();
 	}
 	
+	
+
+
+	public Course(String categorie, String domain, String title, String description, String code) {
+		super();
+		this.categorie = categorie;
+		this.domain = domain;
+		this.title = title;
+		this.description = description;
+		this.code = code;
+
+	}
+
 
 
 

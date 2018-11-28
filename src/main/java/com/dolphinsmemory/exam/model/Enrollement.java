@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 public class Enrollement {
 
@@ -24,6 +27,11 @@ public class Enrollement {
 	
 	
 	
+	
+	public Enrollement() {
+		super();
+	}
+
 	public Enrollement(EnrollementId id, Date enrolledDate, long grade, boolean isComplete, Student student,
 			CourseSession courseSession) {
 		super();

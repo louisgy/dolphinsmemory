@@ -1,6 +1,7 @@
 package com.dolphinsmemory.exam.Controllers;
 
-import java.util.Optional;
+import java.text.ParseException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,40 +11,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dolphinsmemory.exam.model.Enrollement;
 import com.dolphinsmemory.exam.model.EnrollementId;
-import com.dolphinsmemory.exam.model.Student;
-import com.dolphinsmemory.exam.model.CourseSession;
 import com.dolphinsmemory.exam.repository.CourseSessionRepository;
 import com.dolphinsmemory.exam.repository.EnrollementRepository;
 import com.dolphinsmemory.exam.repository.StudentRepository;
+import com.dolphinsmemory.exception.ResourceNotFoundException;
 
 @RestController
 public class EnrollementController {
-	
+
 	@Autowired
 	private EnrollementRepository enrollementRepository;
-	
+
 	@Autowired
 	private StudentRepository studentRepository;
-	
+
 	@Autowired
 	private CourseSessionRepository courseSessionRepository;
 	
-	@Autowired
-	private Enrollement enrollement ;
 
-	@PostMapping("/enrollement/{studentId}/{courseSessionId}")
-	public Enrollement registerStudentForCourse(
-			@PathVariable int  studentId,@PathVariable int  courseSessionId) {
+	@PostMapping("/enrolle/{studentId}/{courseSessionId}/enrollement")
+	public Enrollement EnrollStudent(@PathVariable int studentId, @PathVariable int courseSessionId,@RequestBody Enrollement newEnrollement)
+			throws ParseException {
+		
+		newEnrollement.setId(new EnrollementId(studentId,courseSessionId)); // use optional for null EnrollementId 
+		return studentRepository.findById(studentId).map(student ->{
+			
+			newEnrollement.setStudent(student);
+			
+			courseSessionRepository.findById(courseSessionId).map(courseSession ->{
+				newEnrollement.setCourseSession(courseSession);
+				
+				
+				return enrollementRepository.save(newEnrollement);
+			}).orElseThrow(() -> new ResourceNotFoundException("Course Sesssion id: " + courseSessionId + " not found"));
+			
+			return newEnrollement;
+		}).orElseThrow(() -> new ResourceNotFoundException("Student id " + studentId + " not found"));
+		
 
- Optional<Student> s = studentRepository.findById(studentId);
- Optional<CourseSession> c = courseSessionRepository.findById(courseSessionId);
-		return enrollementRepository.save(new Enrollement(new EnrollementId(234,234), null, courseSessionId, false, null, null));
-//				,"2018-10-23"
-//				,234L
-//				,false
-//				,s
-//				,c);
-		
-		
+
 	}
 }

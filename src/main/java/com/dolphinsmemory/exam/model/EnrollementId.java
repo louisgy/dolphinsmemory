@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Embeddable
 public class EnrollementId implements Serializable {
 
@@ -17,6 +20,11 @@ public class EnrollementId implements Serializable {
 	
 	private int courseSessionId;
 	
+	
+	public EnrollementId() {
+		super();
+	}
+
 	public EnrollementId(int studentId, int courseSessionId) {
 		super();
 		this.studentId = studentId;

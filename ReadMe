@@ -53,7 +53,7 @@ curl -v localhost:8080/teachers
 COURSESESSION ----------------------------------------------------
 
 ADD NEW COURSE SESSION
-curl -X POST localhost:8080/coursession/{507}/{3}/coursesessions -H 'Content-type:application/json' -d '{"dateStart": "2001-12-12","dateEnd": "1989-02-02","averageGrade": 78.44,"courseId" : 507,"teacherId" : 3}'
+curl -X POST localhost:8080/coursession/{501}/{1}/coursesessions -H 'Content-type:application/json' -d '{"dateStart": "2001-12-12","dateEnd": "1989-02-02","averageGrade": 78.44,"courseId" : 507,"teacherId" : 3}'
 
 
 
@@ -64,6 +64,9 @@ curl -v localhost:8080/coursesession
 -----USER
 curl -X POST localhost:8080/new-user -H 'Content-type:application/json' -d '{"firstName": "Edd","lastName": "Louis","email": "teacher@gmail.com","password" : "pass"}'
 curl -X POST localhost:8080/new-user -H 'Content-type:application/json' -d '{"firstName": "E","lastName": "Louis","email": "teacher@gmail.com","password" : "pass"}'
+
+---ENROLLEMENT
+curl -X POST localhost:8080/enroll/{10001}/{1}/enrollement -H 'Content-type:application/json' -d '{"enrolledDate": "1989-02-02","grade": "56L","isComplete": false}'
 
 
 How can I kill whatever process is using port 8080 
